@@ -11,7 +11,31 @@
 		function secondHighest(arr) {
 			//Write your code here
 			
+            if (arr.length <= 1) {
+                return -Infinity;
+            }
+
+            
+            let allSame = arr.every(num => num === arr[0]);
+            if (allSame) {
+                return -Infinity;
+            }
+			let highest = -Infinity;
+			let secondHighest = -Infinity;
+
+		  arr.forEach(num => {
+			if (num > highest) {
+			  secondHighest = highest;
+			  highest = num;
+			} else if (num > secondHighest && num !== highest) {
+			  secondHighest = num;
+			}
+		  });
+		
+		  return secondHighest === -Infinity ? null : secondHighest;
 		}
+			
+		
 
 		function Main() {
 			var n = prompt("Enter the number of elements");
